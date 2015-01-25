@@ -1,0 +1,11 @@
+{
+  "name": "poschunker",
+  "version": "0.0.0",
+  "description": "A chunker.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mark Birbeck <mark.birbeck@gmail.com> (http://markbirbeck.com/)",
+  "license": "MIT"
+}
