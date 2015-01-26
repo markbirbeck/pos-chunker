@@ -13,7 +13,7 @@ describe('tag', function(){
     var tags = 'This/DT is/VBZ some/DT sample/NN text/NN ./. This/DT text/NN can/MD contain/VB multiple/JJ sentences/NNS ./.';
     var res = chunker.parse(tags, '[ { tag:/DT|NN.*?/; } ]+');
 
-    res.should.equal('[This/DT] is/VBZ [some/DT] [sample/NN] [text/NN] ./. [This/DT] [text/NN] can/MD contain/VB multiple/JJ [sentences/NNS] ./.');
+    res.should.equal('[This/DT] is/VBZ [some/DT sample/NN text/NN] ./. [This/DT text/NN] can/MD contain/VB multiple/JJ [sentences/NNS] ./.');
   });
 
   it('should match two consecutive tokens with a single tag', function(){
