@@ -2,7 +2,6 @@
   "name": "poschunker",
   "version": "0.0.0",
   "description": "A chunker.",
-  "main": "index.js",
   "scripts": {
     "test": "mocha"
   },
