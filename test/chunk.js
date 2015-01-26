@@ -12,6 +12,13 @@ describe('chunk', function(){
     res.should.equal('01/CD [(MONTH March/NNP) 2015/CD] Chinese/JJ New/NNP Year/NN Dinner/NN');
   });
 
+  it('should match a chunk with lookahead', function(){
+    var tags = '01/CD March/NNP 2015/CD Chinese/JJ New/NNP Year/NN Dinner/NN';
+    var res = chunker.convert(tags, '[ { word:\\d{1,2} } ](?=\\s[ { word:/January|February|March|April|May|June|July|August|September|October|November|December/ } ])', 'DAY');
+
+    res.should.equal('(DAY 01/CD) March/NNP 2015/CD Chinese/JJ New/NNP Year/NN Dinner/NN');
+  });
+
   it('should not get confused by multiple chunks', function(){
     var tags = '8/CD January/NNP 2014/CD TO/TO 28/CD March/NNP 2014/CD';
     var chunks = chunker.convert(tags, '[ { word:/January|February|March|April|May|June|July|August|September|October|November|December/ } ]', 'MONTH');
