@@ -8,6 +8,7 @@
   "author": "Mark Birbeck <mark.birbeck@gmail.com> (http://markbirbeck.com/)",
   "license": "MIT",
   "devDependencies": {
-    "mocha": "~2.1.0"
+    "mocha": "~2.1.0",
+    "should": "~4.6.1"
   }
 }
