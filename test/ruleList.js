@@ -2,7 +2,7 @@ var should = require('should');
 var chunker = require('..');
 
 describe('rules list', function(){
-  it('should match a set of chunking rules', function(){
+  it('should match a set of date chunking rules', function(){
     var tags = '01/CD March/NNP 2015/CD Chinese/JJ New/NNP Year/NN Dinner/NN';
     var rules = [
       {
@@ -31,7 +31,7 @@ describe('rules list', function(){
     res.should.equal('(DATE (DAY 01/CD) (MONTH March/NNP) (YEAR 2015/CD)) Chinese/JJ New/NNP Year/NN Dinner/NN');
   });
 
-  it.skip('should match a set of date chunking rules', function(){
+  it.skip('should match a set of chunking rules', function(){
     var tags = 'Mary/NN saw/VBD the/DT cat/NN sit/VB on/IN the/DT mat/NN';
     var rules = [
       {
