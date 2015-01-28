@@ -22,6 +22,7 @@ function chunk(tags, ruleList){
   ruleList.map(function (rule){
     if (rule && !('active' in rule && !rule.active) && rule.ruleType === 'tokens'){
       ret = convert(ret, rule.pattern, rule.result);
+      // console.log('chunking:', rule.description, ':', ret);
     }
   });
   return ret;
