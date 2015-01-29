@@ -4,7 +4,7 @@ var should = require('should');
  * Add the recursiveMatch method to the string object:
  */
 
-require('../lib/recursiveMatch');
+var rm = require('../lib/recursiveMatch');
 
 
 describe('recurse', function(){
@@ -49,6 +49,17 @@ describe('recurse', function(){
     it('should match nested parenthesis', function(){
       '(a (b (c)))'.recursiveMatch('\\(([^()]*|(?R))*\\)')[0].should.equal('(a (b (c)))');
     });
+
+    it('should match multiple nested parenthesis', function(){
+      '(a (b (c (d))) e f (g (h)) (i (j (k))))'
+        .recursiveMatch('\\((?:[^()]*|(?R))*\\)')[0]
+        .should.equal('(a (b (c (d))) e f (g (h)) (i (j (k))))');
+
+      '(ABSOLUTEDATE (RELATIVEDATE (DAY 01/CD) (MONTH March/NNP)) (YEAR 2015/CD))'
+        .recursiveMatch('\\(ABSOLUTEDATE (' + rm.expand('\\(([^()]*?|(?R))*?\\)') + '\\s?)*\\)')[0]
+        .should.equal('(ABSOLUTEDATE (RELATIVEDATE (DAY 01/CD) (MONTH March/NNP)) (YEAR 2015/CD))');
+    });
+
 
     it('should match nested div\'s', function(){
       '<body><div>a<div>b<div>c</div><div>d</div></div></div></body>'
