@@ -54,6 +54,12 @@ describe('rules list', function(){
   });
 
   it.skip('should match a set of chunking rules', function(){
+
+    /**
+     * TODO: Work out what to do with tags and chunks. Probably need to
+     * make requests to match on a 'tag', also look for chunks.
+     */
+
     var tags = 'Mary/NN saw/VBD the/DT cat/NN sit/VB on/IN the/DT mat/NN';
     var rules = [
       {
