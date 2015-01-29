@@ -50,6 +50,10 @@ describe('recurse', function(){
       '(a (b (c)))'.recursiveMatch('\\(([^()]*|(?R))*\\)')[0].should.equal('(a (b (c)))');
     });
 
+    it('should match nested parenthesis when using named groups as part of atomic grouping', function(){
+      '(a (b (c)))'.recursiveMatch('\\((?:(?=(?<' + rm.NAMED_GROUP_PLACEHOLDER + '>[^()]*))\\k<' + rm.NAMED_GROUP_PLACEHOLDER + '>|(?R))*\\)')[0].should.equal('(a (b (c)))');
+    });
+
     it('should match multiple nested parenthesis', function(){
       '(a (b (c (d))) e f (g (h)) (i (j (k))))'
         .recursiveMatch('\\((?:[^()]*|(?R))*\\)')[0]
