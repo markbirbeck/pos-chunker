@@ -7,28 +7,50 @@ describe('rules list', function(){
     var rules = [
       {
         ruleType: 'tokens',
+        pattern: '[ { word:/Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday/ } ]',
+        description: 'Days of the week.',
+        result: 'DAYOFWEEK'
+      },
+      {
+        ruleType: 'tokens',
         pattern: '[ { word:/January|February|March|April|May|June|July|August|September|October|November|December/ } ]',
         result: 'MONTH'
       },
       {
         ruleType: 'tokens',
         pattern: '[ { word:\\d{1,2} } ](?=\\s[ { chunk:"MONTH" } ])',
+        description: 'Day number.',
         result: 'DAY'
       },
       {
         ruleType: 'tokens',
         pattern: '[ { word:\\d{4} } ]',
+        description: 'Year.',
         result: 'YEAR'
       },
       {
         ruleType: 'tokens',
-        pattern: '[ { chunk:"DAY" } ] [ { chunk:"MONTH" } ] [ { chunk:"YEAR" } ]',
-        result: 'DATE'
+        pattern: '([ { chunk:"DAYOFWEEK" } ] )?[ { chunk:"DAY" } ] [ { chunk:"MONTH" } ]',
+        description: 'Relative date, i.e., one without a year.',
+        result: 'RELATIVEDATE'
+      },
+      {
+        ruleType: 'tokens',
+        pattern: '[ { chunk:"RELATIVEDATE" } ] [ { chunk:"YEAR" } ]',
+        description: 'Absolute date, i.e., a relative date plus a year.',
+        result: 'ABSOLUTEDATE'
+      },
+      {
+        ruleType: 'tokens',
+        patternx: '[ { chunk:"ABSOLUTEDATE" } ]',
+        pattern: '[ { chunk:"ABSOLUTEDATE" } ] [ { tag:"TO" } ] [ { chunk:"ABSOLUTEDATE" } ]',
+        description: 'A range expressed by having a \'TO\' word between two dates.',
+        result: 'DATERANGE'
       }
     ];
     var res = chunker.chunk(tags, rules);
 
-    res.should.equal('(DATE (DAY 01/CD) (MONTH March/NNP) (YEAR 2015/CD)) Chinese/JJ New/NNP Year/NN Dinner/NN');
+    res.should.equal('(ABSOLUTEDATE (RELATIVEDATE (DAY 01/CD) (MONTH March/NNP)) (YEAR 2015/CD)) Chinese/JJ New/NNP Year/NN Dinner/NN');
   });
 
   it.skip('should match a set of chunking rules', function(){
