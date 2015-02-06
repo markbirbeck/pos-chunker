@@ -21,8 +21,15 @@ function chunk(tags, ruleList){
 
   ruleList.map(function (rule){
     // console.log('chunking:', rule.description, ':', ret);
-    if (rule && !('active' in rule && !rule.active) && rule.ruleType === 'tokens'){
-      ret = convert(ret, rule.pattern, rule.result);
+    if (rule && !('active' in rule && !rule.active)){
+      switch (rule.ruleType){
+        case 'tokens':
+          ret = convert(ret, rule.pattern, rule.result);
+          break;
+
+        default:
+          break;
+      }
     }
   });
   return ret;
