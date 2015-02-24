@@ -17,7 +17,7 @@ function replace(tags, re, newSubstr){
 }
 
 function parse(tags, re){
-  return rm.recursiveReplace(tags, rule(re), '[$1]');
+  return replace(tags, rule(re), '[$1]');
 }
 
 function convert(tags, re, token){
