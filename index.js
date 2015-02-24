@@ -5,6 +5,16 @@ var rm = require('./lib/recursiveMatch');
 exports.parse = parse;
 exports.convert = convert;
 exports.chunk = chunk;
+exports.match = match;
+exports.replace = replace;
+
+function match(tags, re){
+  return rm.recursiveMatch(tags, rule(re));
+}
+
+function replace(tags, re, newSubstr){
+  return rm.recursiveReplace(tags, rule(re), newSubstr);
+}
 
 function parse(tags, re){
   return rm.recursiveReplace(tags, rule(re), '[$1]');
