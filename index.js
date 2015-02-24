@@ -1,13 +1,13 @@
 var rule = require('./lib/rule');
 
-require('./lib/recursiveMatch');
+var rm = require('./lib/recursiveMatch');
 
 exports.parse = parse;
 exports.convert = convert;
 exports.chunk = chunk;
 
 function parse(tags, re){
-  return tags.recursiveReplace(rule(re), '[$1]');
+  return rm.recursiveReplace(tags, rule(re), '[$1]');
 }
 
 function convert(tags, re, token){
