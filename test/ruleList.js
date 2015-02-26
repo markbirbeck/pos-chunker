@@ -69,17 +69,17 @@ describe('rules list', function(){
       },
       {
         ruleType: 'tokens',
-        pattern: '[ { tag:"IN" } ] [ { tag:"NP" } ]',
+        pattern: '[ { tag:"IN" } ] [ { chunk:"NP" } ]',
         result: 'PP'
       },
       {
         ruleType: 'tokens',
-        pattern: '[ { tag:/VB.*?/ } ] [ { tag:/NP|PP/CLAUSE/ } ]+$',
+        pattern: '[ { tag:/VB.*?/ } ] [ { chunk:/NP|PP|CLAUSE/ } ]+$',
         result: 'VP'
       },
       {
         ruleType: 'tokens',
-        pattern: '[ { tag:"NP" } ] [ { tag:"VP" } ]',
+        pattern: '[ { chunk:"NP" } ] [ { chunk:"VP" } ]',
         result: 'CLAUSE'
       }
     ];
