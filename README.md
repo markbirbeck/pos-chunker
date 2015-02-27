@@ -56,7 +56,7 @@ var chunker = require('pos-chunker');
 
 Also note that `POS Chunker` assumes that its input has already been chunked as part of some processing pipeline, using something like [pos](https://www.npmjs.com/package/pos). 
 
-### chunk.convert(tags, re, token)
+### chunk.chunk(tags, re, token)
 
 Converts a string containing POS tags into a combination of POS tags and phrase chunks.
 
@@ -73,7 +73,7 @@ var chunks = chunker.convert(
 chunks.should.equal('01/CD (MONTH March/NNP) 2015/CD Chinese/JJ New/NNP Year/NN Dinner/NN');
 ```
 
-### chunk.parse(tags, re)
+### chunk.chunk(tags, re)
 
 Places square brackets around occurrences of a sequence.
 
@@ -88,7 +88,7 @@ chunks.should.equal('01/CD [(MONTH March/NNP) 2015/CD] Chinese/JJ New/NNP Year/N
 
 ### chunker.chunk(tags, ruleList)
 
-Same as `convert`, but uses a list of rules rather than a single expression.
+Uses a list of rules rather than a single expression.
 
 For example, let's define a sequence of rules that say:
 
