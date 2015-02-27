@@ -1,5 +1,7 @@
 # POS Chunker
 
+[![wercker status](https://app.wercker.com/status/fe97fb8ffc1767d6f8ca9a69b5d1022a/m/master "wercker status")](https://app.wercker.com/project/bykey/fe97fb8ffc1767d6f8ca9a69b5d1022a)
+
 A parts-of-speech (POS) chunker. The purpose of this is to take output from a POS tagger -- which adds a part-of-speech tag such as 'noun' or 'verb' to each word in a string -- and group words together to form phrases.
 
 The module aims to provide the kind of functionality found in [NLTK's `chunk()`](http://www.nltk.org/_modules/nltk/chunk.html) or [Stanford's `TokensRegex()`](http://nlp.stanford.edu/nlp/javadoc/javanlp/edu/stanford/nlp/ling/tokensregex/SequenceMatchRules.html) methods. Since the NLTK syntax is less powerful (it only supports matching tags, not matching words or chunks), we've opted to try to emulate the Stanford approach.
