@@ -74,7 +74,7 @@ describe('rules list', function(){
       },
       {
         ruleType: 'tokens',
-        pattern: '[ { tag:/VB.*?/ } ] [ { chunk:/NP|PP|CLAUSE/ } ]+$',
+        pattern: '[ { tag:/VB.*?/ } ] [ { chunk:/NP|PP/ } ]+',
         result: 'VP'
       },
       {
