@@ -1,3 +1,8 @@
+/**
+ * By 'convert' we mean, take some sequence of tokens and collect them together
+ * under a new tag name:
+ */
+
 var should = require('should');
 var chunker = require('..');
 

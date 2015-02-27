@@ -1,3 +1,7 @@
+/**
+ * Test that the rule library creates rules correctly.
+ */
+
 var should = require('should');
 var rule = require('../lib/rule');
 

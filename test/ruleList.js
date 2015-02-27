@@ -1,3 +1,7 @@
+/**
+ * Test that a list of rules is processed correctly.
+ */
+
 var should = require('should');
 var chunker = require('..');
 

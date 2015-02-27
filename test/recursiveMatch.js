@@ -1,5 +1,8 @@
-var should = require('should');
+/**
+ * Test the recursiveMatch module.
+ */
 
+var should = require('should');
 var rm = require('../lib/recursiveMatch');
 
 
