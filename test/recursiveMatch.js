@@ -3,7 +3,7 @@ var should = require('should');
 var rm = require('../lib/recursiveMatch');
 
 
-describe('recurse', function(){
+describe('recursiveMatch', function(){
   describe('optional', function(){
     it('should match a symettrical pattern', function(){
       rm.recursiveMatch('aaazzz', 'a(?R)?z')[0].should.equal('aaazzz');

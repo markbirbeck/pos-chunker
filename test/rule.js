@@ -1,7 +1,7 @@
 var should = require('should');
 var rule = require('../lib/rule');
 
-describe('expressions', function(){
+describe('rule', function(){
   it('should create expression using tag', function(){
     rule('[ { tag:/VB/; } ]').should.equal('((([^\\s/]*)/(VB)\\s*))');
   });

@@ -1,7 +1,7 @@
 var should = require('should');
 var chunker = require('..');
 
-describe('rules list', function(){
+describe('ruleList', function(){
   it('should match a set of date chunking rules', function(){
     var tags = '01/CD March/NNP 2015/CD Chinese/JJ New/NNP Year/NN Dinner/NN';
     var rules = [
