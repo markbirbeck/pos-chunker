@@ -15,7 +15,7 @@ describe('tag', function(){
 
   it('should match tokens with a single tag but with a regular expression', function(){
     var tags = 'This/DT is/VBZ some/DT sample/NN text/NN ./. This/DT text/NN can/MD contain/VB multiple/JJ sentences/NNS ./.';
-    var res = chunker.parse(tags, '[ { tag:/DT|NN.*?/; } ]+');
+    var res = chunker.parse(tags, '[ { tag:/DT|NNS?/; } ]+');
 
     res.should.equal('[This/DT] is/VBZ [some/DT sample/NN text/NN] ./. [This/DT text/NN] can/MD contain/VB multiple/JJ [sentences/NNS] ./.');
   });
