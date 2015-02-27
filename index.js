@@ -11,6 +11,13 @@ function _match(tags, re){
 function _replace(tags, re, newSubstr){
   return rm
     .recursiveReplace(tags, rule(re), newSubstr)
+
+    /**
+     * This is a tiny hack, since I haven't found a way to deal with the fact
+     * that any regex we do that takes into account that tokens are
+     * space-separated ends up including the final space:
+     */
+
     .replace(/ \]/g, '] ');
 }
 
