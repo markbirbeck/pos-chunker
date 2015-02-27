@@ -167,6 +167,10 @@ chunker.chunk(
 
 ## Changelog
 
-2015-02-27 (v1.0.0)
+### 2015-02-27 (v1.0.1)
+
+Add Wercker.
+
+### 2015-02-27 (v1.0.0)
 
 Initial release.
