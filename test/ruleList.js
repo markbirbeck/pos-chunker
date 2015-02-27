@@ -85,6 +85,6 @@ describe('rules list', function(){
     ];
     var res = chunker.chunk(tags, rules);
 
-    res.should.equal('(NP Mary/NN) saw/VBD (CLAUSE (NP the/DT cat/NN) (VP sit/VB (PP on/IN (NP the/DT mat/NN))))');
+    res.should.equal('(CLAUSE (NP Mary/NN) (VP saw/VBD (NP the/DT cat/NN))) (VP sit/VB (PP on/IN (NP the/DT mat/NN)))');
   });
 });
