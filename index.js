@@ -13,7 +13,9 @@ function match(tags, re){
 }
 
 function replace(tags, re, newSubstr){
-  return rm.recursiveReplace(tags, rule(re), newSubstr);
+  return rm
+    .recursiveReplace(tags, rule(re), newSubstr)
+    .replace(/ \]/g, '] ');
 }
 
 function parse(tags, re){
