@@ -1,4 +1,4 @@
-# POSChunker
+# POS Chunker
 
 A parts-of-speech (POS) chunker. The purpose of this is to take output from a POS tagger -- which adds a part-of-speech tag such as 'noun' or 'verb' to each word in a string -- and group words together to form phrases.
 
@@ -51,12 +51,12 @@ Shall/MD we/PRP have/VBP dinner/NN on/IN (DATE (MONTH April/NNP) 1/CD) st/NN ?/.
 All examples assume:
 
 ```
-var chunker = require('POSChunker');
+var chunker = require('pos-chunker');
 ```
 
-Also note that `POSChunker` assumes that its input has already been chunked as part of some processing pipeline, using something like [pos](https://www.npmjs.com/package/pos). 
+Also note that `POS Chunker` assumes that its input has already been chunked as part of some processing pipeline, using something like [pos](https://www.npmjs.com/package/pos). 
 
-### POSChunker#convert
+### chunk.convert(tags, re, token)
 
 Converts a string containing POS tags into a combination of POS tags and phrase chunks.
 
@@ -73,7 +73,7 @@ var chunks = chunker.convert(
 chunks.should.equal('01/CD (MONTH March/NNP) 2015/CD Chinese/JJ New/NNP Year/NN Dinner/NN');
 ```
 
-### POSChunker#parse
+### chunk.parse(tags, re)
 
 Places square brackets around occurrences of a sequence.
 
@@ -86,7 +86,7 @@ chunks = chunker.parse(chunks, '[ { chunk:"MONTH" } ] [ { word:"\\d{4}" } ]');
 chunks.should.equal('01/CD [(MONTH March/NNP) 2015/CD] Chinese/JJ New/NNP Year/NN Dinner/NN');
 ```
 
-### POSChunker#chunk
+### chunker.chunk(tags, ruleList)
 
 Same as `convert`, but uses a list of rules rather than a single expression.
 
