@@ -143,7 +143,7 @@ var CLAUSE = {
 };
 ```
 
-This pattern now means we can match phrases such as *The doctor saw the patient at the surgery*
+This pattern now means we can match phrases such as *The doctor saw the patient at the surgery.*
 
 Here are a few examples using these rules:
 
