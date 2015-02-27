@@ -53,7 +53,7 @@ describe('rules list', function(){
     res.should.equal('(ABSOLUTEDATE (RELATIVEDATE (DAY 01/CD) (MONTH March/NNP)) (YEAR 2015/CD)) Chinese/JJ New/NNP Year/NN Dinner/NN');
   });
 
-  it.skip('should match a set of chunking rules', function(){
+  it('should match a set of chunking rules', function(){
 
     /**
      * TODO: Work out what to do with tags and chunks. Probably need to
