@@ -12,7 +12,6 @@
     "should": "~4.6.1"
   },
   "dependencies": {
-    "lodash": "~3.0.0",
     "xregexp": "~2.0.0"
   }
 }
