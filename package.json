@@ -1,6 +1,6 @@
 {
   "name": "pos-chunker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A parts-of-speech chunker.",
   "scripts": {
     "test": "mocha"
