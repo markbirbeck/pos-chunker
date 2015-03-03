@@ -1,12 +1,14 @@
+// jscs:disable maximumLineLength
+
 /**
  * Test that a list of rules is processed correctly.
  */
 
-var should = require('should');
+require('should');
 var chunker = require('..');
 
-describe('ruleList', function(){
-  it('should match a set of date chunking rules', function(){
+describe('ruleList', function() {
+  it('should match a set of date chunking rules', function() {
     var tags = '01/CD March/NNP 2015/CD Chinese/JJ New/NNP Year/NN Dinner/NN';
     var rules = [
       {
@@ -54,10 +56,10 @@ describe('ruleList', function(){
     ];
     var res = chunker.chunk(tags, rules);
 
-    res.should.equal('(ABSOLUTEDATE (RELATIVEDATE (DAY 01/CD) (MONTH March/NNP)) (YEAR 2015/CD)) Chinese/JJ New/NNP Year/NN Dinner/NN');
+    res.should.equal('[ABSOLUTEDATE [RELATIVEDATE [DAY 01/CD] [MONTH March/NNP]] [YEAR 2015/CD]] Chinese/JJ New/NNP Year/NN Dinner/NN');
   });
 
-  it('should match a set of chunking rules', function(){
+  it('should match a set of chunking rules', function() {
 
     /**
      * TODO: Work out what to do with tags and chunks. Probably need to
@@ -89,6 +91,6 @@ describe('ruleList', function(){
     ];
     var res = chunker.chunk(tags, rules);
 
-    res.should.equal('(CLAUSE (NP Mary/NN) (VP saw/VBD (NP the/DT cat/NN))) (VP sit/VB (PP on/IN (NP the/DT mat/NN)))');
+    res.should.equal('[CLAUSE [NP Mary/NN] [VP saw/VBD [NP the/DT cat/NN]]] [VP sit/VB [PP on/IN [NP the/DT mat/NN]]]');
   });
 });
