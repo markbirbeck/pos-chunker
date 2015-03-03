@@ -61,7 +61,7 @@ describe('recursiveMatch', function() {
     });
   });
 
-  describe('balanced constructs', function () {
+  describe('balanced constructs', function() {
     it('should match nested parenthesis', function() {
       rm
         .recursiveMatch('(a (b (c)))', '\\(([^()]*|(?R))*\\)')[0]
