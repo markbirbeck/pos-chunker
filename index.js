@@ -21,17 +21,17 @@ function _replace(tags, re, newSubstr) {
      * space-separated ends up including the final space:
      */
 
-    .replace(/ \]/g, '] ');
+    .replace(/ \}/g, '} ');
 }
 
 function _parse(tags, re) {
-  return _replace(tags, rule(re), '[$1]');
+  return _replace(tags, rule(re), '{$1}');
 }
 
 function _convert(tags, re, token) {
   var mapped = _parse(tags, re);
 
-  return mapped.replace(/\[(.*?)]/g, parens.left + token + ' $1' + parens.right);
+  return mapped.replace(/\{(.*?)}/g, parens.left + token + ' $1' + parens.right);
 }
 
 function chunk(tags, re, token) {
