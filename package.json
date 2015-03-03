@@ -2,6 +2,13 @@
   "name": "pos-chunker",
   "version": "1.0.1",
   "description": "A parts-of-speech chunker.",
+  "keywords": [
+    "chunker",
+    "entity extraction",
+    "expression tagger",
+    "pos",
+    "parts of speech"
+  ],
   "scripts": {
     "test": "mocha"
   },
