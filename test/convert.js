@@ -31,4 +31,13 @@ describe('convert', function() {
 
     res.should.equal('(DAY 01/CD) (MONTH March/NNP) 2015/CD Chinese/JJ New/NNP Year/NN Dinner/NN');
   });
+
+  it('should honour word boundaries', function() {
+    var tags = 'The/DT 1935/CD march/NN across/IN the/DT Jinsha/NN River/NNP ./.';
+    var res = chunker.chunk(tags, '[ { word:/[Jj]anuary|[Ff]ebruary|[Mm]arch|[Aa]pril|[Mm]ay|[Jj]une|[Jj]uly|[Aa]ugust|[Ss]eptember|[Oo]ctober|[Nn]ovember|[Dd]ecember/ } ]', 'MONTH');
+
+    res = chunker.chunk(res, '[ { word:\\d{1,2} } ](?=[ { chunk:MONTH } ])', 'DAY');
+
+    res.should.equal('The/DT 1935/CD (MONTH march/NN) across/IN the/DT Jinsha/NN River/NNP ./.');
+  });
 });
