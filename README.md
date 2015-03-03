@@ -167,6 +167,11 @@ chunker.chunk(
 
 ## Changelog
 
+### 2015-03-03 (v1.1.0)
+
+* feat(#1): switch output format to use labelled bracket notation
+* fix(#2): word boundaries are not being honoured
+
 ### 2015-02-27 (v1.0.1)
 
 Add Wercker.
