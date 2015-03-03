@@ -56,7 +56,7 @@ describe('ruleList', function() {
     ];
     var res = chunker.chunk(tags, rules);
 
-    res.should.equal('(ABSOLUTEDATE (RELATIVEDATE (DAY 01/CD) (MONTH March/NNP)) (YEAR 2015/CD)) Chinese/JJ New/NNP Year/NN Dinner/NN');
+    res.should.equal('[ABSOLUTEDATE [RELATIVEDATE [DAY 01/CD] [MONTH March/NNP]] [YEAR 2015/CD]] Chinese/JJ New/NNP Year/NN Dinner/NN');
   });
 
   it('should match a set of chunking rules', function() {
@@ -91,6 +91,6 @@ describe('ruleList', function() {
     ];
     var res = chunker.chunk(tags, rules);
 
-    res.should.equal('(CLAUSE (NP Mary/NN) (VP saw/VBD (NP the/DT cat/NN))) (VP sit/VB (PP on/IN (NP the/DT mat/NN)))');
+    res.should.equal('[CLAUSE [NP Mary/NN] [VP saw/VBD [NP the/DT cat/NN]]] [VP sit/VB [PP on/IN [NP the/DT mat/NN]]]');
   });
 });
