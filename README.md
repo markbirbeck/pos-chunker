@@ -39,13 +39,13 @@ We could then write another rule that says if we find a month that is followed b
 The output after the first rule would be:
 
 ```
-Shall/MD we/PRP have/VBP dinner/NN on/IN (MONTH April/NNP) 1/CD st/NN ?/.
+Shall/MD we/PRP have/VBP dinner/NN on/IN [MONTH April/NNP] 1/CD st/NN ?/.
 ```
 
 and after the second:
 
 ```
-Shall/MD we/PRP have/VBP dinner/NN on/IN (DATE (MONTH April/NNP) 1/CD) st/NN ?/.
+Shall/MD we/PRP have/VBP dinner/NN on/IN [DATE [MONTH April/NNP] 1/CD] st/NN ?/.
 ```
 
 ## API
@@ -72,20 +72,20 @@ var chunks = chunker.convert(
   'MONTH'
 );
 
-chunks.should.equal('01/CD (MONTH March/NNP) 2015/CD Chinese/JJ New/NNP Year/NN Dinner/NN');
+chunks.should.equal('01/CD [MONTH March/NNP] 2015/CD Chinese/JJ New/NNP Year/NN Dinner/NN');
 ```
 
 ### chunk.chunk(tags, re)
 
-Places square brackets around occurrences of a sequence.
+Places squiggly brackets around occurrences of a sequence.
 
 Using the output we obtained in the previous example, let's locate any occurrence of a month followed by a year:
 
 ```
-var chunks = '01/CD (MONTH March/NNP) 2015/CD Chinese/JJ New/NNP Year/NN Dinner/NN';
+var chunks = '01/CD [MONTH March/NNP] 2015/CD Chinese/JJ New/NNP Year/NN Dinner/NN';
 
 chunks = chunker.parse(chunks, '[ { chunk:"MONTH" } ] [ { word:"\\d{4}" } ]');
-chunks.should.equal('01/CD [(MONTH March/NNP) 2015/CD] Chinese/JJ New/NNP Year/NN Dinner/NN');
+chunks.should.equal('01/CD {[MONTH March/NNP] 2015/CD} Chinese/JJ New/NNP Year/NN Dinner/NN');
 ```
 
 ### chunker.chunk(tags, ruleList)
@@ -155,13 +155,13 @@ var rules = [NP, PP, VP, CLAUSE];
 chunker.chunk(
   'The/DT doctor/NN saw/VBD the/DT patient/NN at/IN the/DT surgery/NN ./.', rules
 ).should.equal(
-  '(CLAUSE (NP The/DT doctor/NN) (VP saw/VBD (NP the/DT patient/NN) (PP at/IN (NP the/DT surgery/NN)))) ./.'
+  '[CLAUSE [NP The/DT doctor/NN] [VP saw/VBD [NP the/DT patient/NN] [PP at/IN [NP the/DT surgery/NN]]]] ./.'
 );
 
 chunker.chunk(
   'Mary/NN saw/VBD the/DT cat/NN sit/VB on/IN the/DT mat/NN ./.', rules
 ).should.equal(
-  '(CLAUSE (NP Mary/NN) (VP saw/VBD (NP the/DT cat/NN))) (VP sit/VB (PP on/IN (NP the/DT mat/NN))) ./.'
+  '[CLAUSE [NP Mary/NN] [VP saw/VBD [NP the/DT cat/NN]]] [VP sit/VB [PP on/IN [NP the/DT mat/NN]]] ./.'
 );
 ```
 
