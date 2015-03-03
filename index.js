@@ -4,11 +4,11 @@ var rm = require('./lib/recursiveMatch');
 
 exports.chunk = chunk;
 
-function _match(tags, re){
+function _match(tags, re) {
   return rm.recursiveMatch(tags, rule(re));
 }
 
-function _replace(tags, re, newSubstr){
+function _replace(tags, re, newSubstr) {
   return rm
     .recursiveReplace(tags, rule(re), newSubstr)
 
@@ -21,17 +21,17 @@ function _replace(tags, re, newSubstr){
     .replace(/ \]/g, '] ');
 }
 
-function _parse(tags, re){
+function _parse(tags, re) {
   return _replace(tags, rule(re), '[$1]');
 }
 
-function _convert(tags, re, token){
+function _convert(tags, re, token) {
   var mapped = _parse(tags, re);
 
   return mapped.replace(/\[(.*?)]/g, '(' + token + ' $1)');
 }
 
-function chunk(tags, re, token){
+function chunk(tags, re, token) {
   var ret = tags;
   var ruleList;
 
@@ -40,8 +40,8 @@ function chunk(tags, re, token){
    * just want to demarcate a chunk:
    */
 
-  if (typeof re === 'string'){
-    if (!token){
+  if (typeof re === 'string') {
+    if (!token) {
       return _parse(tags, re);
     } else {
       ruleList = [{
@@ -50,19 +50,18 @@ function chunk(tags, re, token){
         result: token
       }];
     }
-  }
+  } else {
 
-  /**
-   * Otherwise, we have a collection of mapping rules:
-   */
+    /**
+     * Otherwise, we have a collection of mapping rules:
+     */
 
-  else {
     ruleList = re;
   }
 
-  ruleList.map(function (rule){
+  ruleList.map(function(rule) {
     // console.log('chunking:', rule.description, ':', ret);
-    if (rule && !('active' in rule && !rule.active)){
+    if (rule && !('active' in rule && !rule.active)) {
       switch (rule.ruleType){
         case 'tokens':
           ret = _convert(ret, rule.pattern, rule.result);
