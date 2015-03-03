@@ -1,6 +1,6 @@
 {
   "parens": {
-    "left": "(",
-    "right": ")"
+    "left": "[",
+    "right": "]"
   }
 }
