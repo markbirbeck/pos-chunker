@@ -5,8 +5,6 @@ var rm = require('./lib/recursiveMatch');
 var config = require('./config/config');
 var parens = config.parens;
 
-exports.chunk = chunk;
-
 function _match(tags, re) {
   return rm.recursiveMatch(tags, rule(re));
 }
@@ -77,3 +75,5 @@ function chunk(tags, re, token) {
   });
   return ret;
 }
+
+exports.chunk = chunk;

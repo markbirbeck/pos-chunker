@@ -1,6 +1,10 @@
 {
   "name": "pos-chunker",
-  "version": "1.1.0",
+  "version": "1.1.1",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/markbirbeck/pos-chunker.git"
+  },
   "description": "A parts-of-speech chunker.",
   "keywords": [
     "chunker",
@@ -10,6 +14,7 @@
     "pos",
     "parts of speech"
   ],
+  "bugs" : "http://github.com/markbirbeck/pos-chunker/issues",
   "scripts": {
     "test": "mocha"
   },
