@@ -14,6 +14,7 @@
     "pos",
     "parts of speech"
   ],
+  "bugs" : "http://github.com/markbirbeck/pos-chunker/issues",
   "scripts": {
     "test": "mocha"
   },
