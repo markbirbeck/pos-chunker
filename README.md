@@ -320,6 +320,10 @@ chunker.chunk(
 
 ## Changelog
 
+### 2015-03-04 (v1.1.1)
+
+* add explanation of matching syntax to README
+
 ### 2015-03-03 (v1.1.0)
 
 * feat(#1): switch output format to use labelled bracket notation
