@@ -306,13 +306,15 @@ Here are a few examples using these rules:
 var rules = [NP, PP, VP, CLAUSE];
 
 chunker.chunk(
-  'The/DT doctor/NN saw/VBD the/DT patient/NN at/IN the/DT surgery/NN ./.', rules
+  'The/DT doctor/NN saw/VBD the/DT patient/NN at/IN the/DT surgery/NN ./.',
+  rules
 ).should.equal(
   '[CLAUSE [NP The/DT doctor/NN] [VP saw/VBD [NP the/DT patient/NN] [PP at/IN [NP the/DT surgery/NN]]]] ./.'
 );
 
 chunker.chunk(
-  'Mary/NN saw/VBD the/DT cat/NN sit/VB on/IN the/DT mat/NN ./.', rules
+  'Mary/NN saw/VBD the/DT cat/NN sit/VB on/IN the/DT mat/NN ./.',
+  rules
 ).should.equal(
   '[CLAUSE [NP Mary/NN] [VP saw/VBD [NP the/DT cat/NN]]] [VP sit/VB [PP on/IN [NP the/DT mat/NN]]] ./.'
 );
