@@ -7,7 +7,7 @@ var rule = require('../lib/rule');
 
 describe('rule', function() {
   it('should create expression using tag', function() {
-    rule('[ { tag:/VB/; } ]').should.equal('((\\b([^\\s/]*)/(VB)\\b\\s*))');
+    rule('[ { tag:/VB/; } ]').should.equal('(((?:\\s|\\b)([^\\s/]*)/(VB)\\s*))');
   });
 
   it('should create expression using tag without final semicolon', function() {
@@ -18,22 +18,22 @@ describe('rule', function() {
 
   it('should create expression using tag with regular expression', function() {
     rule('[ { tag:/DT|NN.*/; } ]')
-      .should.equal('((\\b([^\\s/]*)/(DT|NN.*)\\b\\s*))');
+      .should.equal('(((?:\\s|\\b)([^\\s/]*)/(DT|NN.*)\\s*))');
   });
 
   it('should create expression using word', function() {
-    rule('[ { word:/cat/; } ]').should.equal('((\\b(cat)/([A-Z]*)\\b\\s*))');
+    rule('[ { word:/cat/; } ]').should.equal('(((?:\\s|\\b)(cat)/([A-Z]*)\\s*))');
   });
 
   it('should create expression using word with regular expression', function() {
     var res = rule('[ { word:/cat|dog/; } ]');
 
-    res.should.equal('((\\b(cat|dog)/([A-Z]*)\\b\\s*))');
+    res.should.equal('(((?:\\s|\\b)(cat|dog)/([A-Z]*)\\s*))');
   });
 
   it('should create expression using word and tag', function() {
     var res = rule('[ { word:/cat|dog/; tag:"NN" } ]');
 
-    res.should.equal('((\\b(cat|dog)/(NN)\\b\\s*))');
+    res.should.equal('(((?:\\s|\\b)(cat|dog)/(NN)\\s*))');
   });
 });

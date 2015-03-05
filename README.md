@@ -121,7 +121,7 @@ The spaces within the expressions are not relevant, so the previous example coul
 
 ### Tags
 
-All of the previous examples match against the value of words regardless of the part-of-speech they represent. To match when the part-of-speech *is* relevant simply use `tag` in the expressions. For example, to find all proper nouns use the folowing syntax:
+All of the previous examples match against the value of words regardless of the part-of-speech they represent. To match when the part-of-speech *is* relevant simply use `tag` in the expressions. For example, to find all proper nouns use the following syntax:
 
     [ { tag:NNP } ]
 
@@ -219,7 +219,7 @@ For example:
 
 ```
 var tags = '01/CD March/NNP 2015/CD Chinese/JJ New/NNP Year/NN Dinner/NN';
-var chunks = chunker.convert(
+var chunks = chunker.chunk(
   tags,
   '[ { word:/January|February|March|April|May|June|July|August|September|October|November|December/ } ]',
   'MONTH'
@@ -237,7 +237,7 @@ Using the output we obtained in the previous example, let's locate any occurrenc
 ```
 var chunks = '01/CD [MONTH March/NNP] 2015/CD Chinese/JJ New/NNP Year/NN Dinner/NN';
 
-chunks = chunker.parse(chunks, '[ { chunk:"MONTH" } ] [ { word:"\\d{4}" } ]');
+chunks = chunker.chunk(chunks, '[ { chunk:"MONTH" } ] [ { word:"\\d{4}" } ]');
 chunks.should.equal('01/CD {[MONTH March/NNP] 2015/CD} Chinese/JJ New/NNP Year/NN Dinner/NN');
 ```
 
@@ -306,19 +306,25 @@ Here are a few examples using these rules:
 var rules = [NP, PP, VP, CLAUSE];
 
 chunker.chunk(
-  'The/DT doctor/NN saw/VBD the/DT patient/NN at/IN the/DT surgery/NN ./.', rules
+  'The/DT doctor/NN saw/VBD the/DT patient/NN at/IN the/DT surgery/NN ./.',
+  rules
 ).should.equal(
   '[CLAUSE [NP The/DT doctor/NN] [VP saw/VBD [NP the/DT patient/NN] [PP at/IN [NP the/DT surgery/NN]]]] ./.'
 );
 
 chunker.chunk(
-  'Mary/NN saw/VBD the/DT cat/NN sit/VB on/IN the/DT mat/NN ./.', rules
+  'Mary/NN saw/VBD the/DT cat/NN sit/VB on/IN the/DT mat/NN ./.',
+  rules
 ).should.equal(
   '[CLAUSE [NP Mary/NN] [VP saw/VBD [NP the/DT cat/NN]]] [VP sit/VB [PP on/IN [NP the/DT mat/NN]]] ./.'
 );
 ```
 
 ## Changelog
+
+### 2015-03-05 (v1.2.0)
+
+* fix(#3): tags with punctuation are not matching
 
 ### 2015-03-04 (v1.1.1)
 
