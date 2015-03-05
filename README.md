@@ -219,7 +219,7 @@ For example:
 
 ```
 var tags = '01/CD March/NNP 2015/CD Chinese/JJ New/NNP Year/NN Dinner/NN';
-var chunks = chunker.convert(
+var chunks = chunker.chunk(
   tags,
   '[ { word:/January|February|March|April|May|June|July|August|September|October|November|December/ } ]',
   'MONTH'
@@ -237,7 +237,7 @@ Using the output we obtained in the previous example, let's locate any occurrenc
 ```
 var chunks = '01/CD [MONTH March/NNP] 2015/CD Chinese/JJ New/NNP Year/NN Dinner/NN';
 
-chunks = chunker.parse(chunks, '[ { chunk:"MONTH" } ] [ { word:"\\d{4}" } ]');
+chunks = chunker.chunk(chunks, '[ { chunk:"MONTH" } ] [ { word:"\\d{4}" } ]');
 chunks.should.equal('01/CD {[MONTH March/NNP] 2015/CD} Chinese/JJ New/NNP Year/NN Dinner/NN');
 ```
 
