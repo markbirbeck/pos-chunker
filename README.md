@@ -121,7 +121,7 @@ The spaces within the expressions are not relevant, so the previous example coul
 
 ### Tags
 
-All of the previous examples match against the value of words regardless of the part-of-speech they represent. To match when the part-of-speech *is* relevant simply use `tag` in the expressions. For example, to find all proper nouns use the folowing syntax:
+All of the previous examples match against the value of words regardless of the part-of-speech they represent. To match when the part-of-speech *is* relevant simply use `tag` in the expressions. For example, to find all proper nouns use the following syntax:
 
     [ { tag:NNP } ]
 
