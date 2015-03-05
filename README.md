@@ -322,6 +322,10 @@ chunker.chunk(
 
 ## Changelog
 
+### 2015-03-05 (v1.2.0)
+
+* fix(#3): tags with punctuation are not matching
+
 ### 2015-03-04 (v1.1.1)
 
 * add explanation of matching syntax to README
