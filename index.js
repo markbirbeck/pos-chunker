@@ -19,6 +19,7 @@ function _replace(tags, re, newSubstr) {
      * space-separated ends up including the final space:
      */
 
+    .replace(/\{ /g, ' {')
     .replace(/ \}/g, '} ');
 }
 
