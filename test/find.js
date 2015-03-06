@@ -62,6 +62,13 @@ describe('find tags, words and chunks', function() {
 
       res.should.equal('Half/NN Term/NN :/: Monday/NNP -/: Friday/NNP 17/CD to/TO 21/CD {February/NNP} 2014/CD (incl/NN ./. )/)');
     });
+
+    it('should match tokens with punctuation', function() {
+      var tags = '17/CD -/: 21/CD February/NNP 2014/CD (/( incl/NN ./. )/)';
+      var res = chunker.chunk(tags, '[ { word:[.()-] } ]');
+
+      res.should.equal('17/CD {-/:} 21/CD February/NNP 2014/CD {(/(} incl/NN {./.} {)/)}');
+    });
   });
 
   describe('chunk', function() {
