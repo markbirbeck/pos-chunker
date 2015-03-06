@@ -133,5 +133,14 @@ describe('find tags, words and chunks', function() {
         '[DAYOFWEEK Friday/NN] {[DAY 17/CD]} [MONTH February/NNP] [YEAR 2014/CD]'
       );
     });
+
+    it('should match a chunk with a regular expression', function() {
+      chunker.chunk(
+        '[DAYOFWEEK Friday/NN] [DAY 17/CD] [MONTH February/NNP] [YEAR 2014/CD]',
+        '[ { chunk:DAY(OFWEEK)? } ]'
+      ).should.equal(
+        '{[DAYOFWEEK Friday/NN]} {[DAY 17/CD]} [MONTH February/NNP] [YEAR 2014/CD]'
+      );
+    });
   });
 });
