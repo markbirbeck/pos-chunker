@@ -104,12 +104,20 @@ and the third will match the word *have*, followed by either the word *dinner* o
 
     Shall/MD we/PRP {have/VBP dinner/NN} ?/.
 
-Note that we can also change the last rule to use lookahead; we can match *have* when it is followed by *dinner* or *lunch*, but only capture the verb:
+Note that we can also change the last rule to use lookahead or lookbehind; for example, we can match *have* when it is followed by *dinner* or *lunch*, but only capture the verb:
 
 ```
 [ { word:have } ] (?=[ { word:/dinner|lunch/ } ])
 // Shall/MD we/PRP {have/VBP} dinner/NN ?/.
 ```
+
+Alternatively we could find meals by matching any word that follows the word *have*:
+
+```
+(?<=[ { word:have } ]) [ { word:/.*?/ } ]
+// Shall/MD we/PRP have/VBP {dinner/NN} ?/.
+```
+
 
 The spaces within the expressions are not relevant, so the previous example could also be written in any of the following ways:
 
