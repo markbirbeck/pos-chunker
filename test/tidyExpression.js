@@ -5,7 +5,7 @@
 require('should');
 var rule = require('../lib/rule');
 
-describe('tidy expressions', function() {
+describe('tidy expression', function() {
   describe('spaces', function() {
     it('should ignore spaces within expression', function() {
       rule('[ { tag:/VB/ } ]').should.equal(rule('[{ tag:/VB/ }]'));
