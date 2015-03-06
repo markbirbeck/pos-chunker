@@ -12,7 +12,7 @@ describe('rule', function() {
 
   it('should create expression using tag with regular expression', function() {
     rule('[ { tag:/DT|NN.*/; } ]')
-      .should.equal('(((?:^|\\s|\\b)([^\\s/]*)/(DT|NN.*)))');
+      .should.equal('(((?:^|\\s|\\b)([^\\s/]+)/(DT|NN.*)))');
   });
 
   it('should create expression using word', function() {
