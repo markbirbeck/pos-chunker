@@ -322,6 +322,11 @@ chunker.chunk(
 
 ## Changelog
 
+### 2015-03-06 (v1.2.1)
+
+* fix(#5): matching fails for words that have punctuation tags
+* fix(#4): spaces between expressions in rules prevent match
+
 ### 2015-03-05 (v1.2.0)
 
 * fix(#3): tags with punctuation are not matching
