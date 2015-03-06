@@ -24,7 +24,7 @@ describe('ruleList', function() {
       },
       {
         ruleType: 'tokens',
-        pattern: '[ { word:\\d{1,2} } ](?=\\s[ { chunk:"MONTH" } ])',
+        pattern: '[ { word:\\d{1,2} } ](?=[ { chunk:"MONTH" } ])',
         description: 'Day number.',
         result: 'DAY'
       },
