@@ -330,6 +330,10 @@ chunker.chunk(
 
 ## Changelog
 
+### 2015-03-06 (v1.3.0)
+
+* feat(#6): add support for lookbehind
+
 ### 2015-03-06 (v1.2.1)
 
 * fix(#5): matching fails for words that have punctuation tags
