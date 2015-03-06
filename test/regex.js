@@ -30,4 +30,33 @@ describe('regex rules', function() {
 
     res.should.equal('[DAY 01/CD] [MONTH March/NNP] 2015/CD Chinese/JJ New/NNP Year/NN Dinner/NN');
   });
+
+  describe('lookbehind', function() {
+    it('should not match incorrectly', function() {
+      chunker.chunk(
+        '1/CD week/NNP in/IN 2015/CD',
+        '(?<=[ { chunk:MONTH } ])[ { word:\\d{4} } ]'
+      ).should.equal(
+        '1/CD week/NNP in/IN 2015/CD'
+      );
+    });
+
+    it('should match one prior expression', function() {
+      chunker.chunk(
+        '01/CD [MONTH March/NNP] 2015/CD Chinese/JJ New/NNP Year/NN Dinner/NN',
+        '(?<=[ { chunk:MONTH } ])[ { word:\\d{4} } ]'
+      ).should.equal(
+        '01/CD [MONTH March/NNP] {2015/CD} Chinese/JJ New/NNP Year/NN Dinner/NN'
+      );
+    });
+
+    it('should match more than one prior expression', function() {
+      chunker.chunk(
+        '[DAY 01/CD] [MONTH March/NNP] 2015/CD Chinese/JJ New/NNP Year/NN Dinner/NN',
+        '(?<=[ { chunk:DAY } ][ { chunk:MONTH } ])[ { word:\\d{4} } ]'
+      ).should.equal(
+        '[DAY 01/CD] [MONTH March/NNP] {2015/CD} Chinese/JJ New/NNP Year/NN Dinner/NN'
+      );
+    });
+  });
 });
