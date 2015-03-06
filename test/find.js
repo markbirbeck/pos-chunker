@@ -124,5 +124,23 @@ describe('find tags, words and chunks', function() {
       var res = chunker.chunk(dates, '[ { chunk:"DATE" } ]');
       res.should.equal('8/CD [MONTH January/NNP] TO/TO {[DATE 28/CD [MONTH March/NNP] 2014/CD]}');
     });
+
+    it('should not get confused by similar names', function() {
+      chunker.chunk(
+        '[DAYOFWEEK Friday/NN] [DAY 17/CD] [MONTH February/NNP] [YEAR 2014/CD]',
+        '[ { chunk:DAY } ]'
+      ).should.equal(
+        '[DAYOFWEEK Friday/NN] {[DAY 17/CD]} [MONTH February/NNP] [YEAR 2014/CD]'
+      );
+    });
+
+    it('should match a chunk with a regular expression', function() {
+      chunker.chunk(
+        '[DAYOFWEEK Friday/NN] [DAY 17/CD] [MONTH February/NNP] [YEAR 2014/CD]',
+        '[ { chunk:DAY(OFWEEK)? } ]'
+      ).should.equal(
+        '{[DAYOFWEEK Friday/NN]} {[DAY 17/CD]} [MONTH February/NNP] [YEAR 2014/CD]'
+      );
+    });
   });
 });
