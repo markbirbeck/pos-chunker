@@ -330,6 +330,10 @@ chunker.chunk(
 
 ## Changelog
 
+### 2015-03-06 (v1.3.2)
+
+* fix(#6): expressions to match chunks are finding longer chunk names
+
 ### 2015-03-06 (v1.3.1)
 
 * feat(#7): add support for lookbehind to match()
