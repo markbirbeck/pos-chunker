@@ -330,6 +330,10 @@ chunker.chunk(
 
 ## Changelog
 
+### 2015-07-27 (v1.3.3)
+
+* fix(#10): error in readme in chunker.chunk(tags, ruleList)
+
 ### 2015-03-06 (v1.3.2)
 
 * fix(#6): expressions to match chunks are finding longer chunk names
