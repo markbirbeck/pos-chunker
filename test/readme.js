@@ -40,7 +40,7 @@ describe('README examples', function() {
           };
           var CLAUSE = {
             ruleType: 'tokens',
-            pattern: '[ { tag:NP } ] [ { tag:VP } ]',
+            pattern: '[ { chunk:NP } ] [ { chunk:VP } ]',
             result: 'CLAUSE'
           };
           var rules = [NP, PP, VP, CLAUSE];

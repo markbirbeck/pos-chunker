@@ -301,7 +301,7 @@ Now finally we can declare a pattern for a clause, which we said at the top is a
 ```
 var CLAUSE = {
   ruleType: 'tokens',
-  pattern: '[ { tag:NP } ] [ { tag:VP } ]',
+  pattern: '[ { chunk:NP } ] [ { chunk:VP } ]',
   result: 'CLAUSE'
 };
 ```
