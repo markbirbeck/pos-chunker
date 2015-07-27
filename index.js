@@ -62,7 +62,6 @@ function chunk(tags, re, token) {
   }
 
   ruleList.map(function(rule) {
-    // console.log('chunking:', rule.description, ':', ret);
     if (rule && !('active' in rule && !rule.active)) {
       switch (rule.ruleType){
         case 'tokens':
@@ -72,6 +71,7 @@ function chunk(tags, re, token) {
         default:
           break;
       }
+      // console.log('chunked:', rule.description, ':', ret);
     }
   });
   return ret;

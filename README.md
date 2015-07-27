@@ -301,7 +301,7 @@ Now finally we can declare a pattern for a clause, which we said at the top is a
 ```
 var CLAUSE = {
   ruleType: 'tokens',
-  pattern: '[ { tag:NP } ] [ { tag:VP } ]',
+  pattern: '[ { chunk:NP } ] [ { chunk:VP } ]',
   result: 'CLAUSE'
 };
 ```
@@ -329,6 +329,10 @@ chunker.chunk(
 ```
 
 ## Changelog
+
+### 2015-07-27 (v1.3.3)
+
+* fix(#10): error in readme in chunker.chunk(tags, ruleList)
 
 ### 2015-03-06 (v1.3.2)
 
